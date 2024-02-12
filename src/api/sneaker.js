@@ -7,6 +7,9 @@ export const getAllSneakers = () => {
 }
 
 // READ -> Show
+export const getOneSneaker = (id) => {
+    return axios(`${apiUrl}/sneakers/${id}`)
+}
 // CREATE -> Add a sneaker
 // UPDATE -> Adjust a sneaker
 // DELETE -> throw away a pair of sneakers
