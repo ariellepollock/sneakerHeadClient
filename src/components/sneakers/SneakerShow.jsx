@@ -39,7 +39,6 @@ const SneakerShow = (props) => {
                             <small>colorway: { sneaker.colorway }</small><br />
                             <small>release year: { sneaker.releaseYear }</small><br />
                             <small>condition: { sneaker.condition }</small>
-                            <small>{ sneaker.isVintage }</small>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>

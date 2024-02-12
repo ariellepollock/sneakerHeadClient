@@ -17,31 +17,23 @@ const SneakersIndex = (props) => {
 
     const { msgAlert } = props
 
-    useEffect(() => {
-		getAllSneakers()
-			// .then(res => console.log('sneakers from axios call: \n', res.data.sneakers))
-			.then(res => {
-				console.log('use Effect hook ran')
-				setSneakers(res.data.sneakers)
-			})
-            .then(() => {
-                msgAlert({
-                    heading: 'Success!',
-                    message: 'Got all sneakers!',
-                    variant: 'success'
+        useEffect(() => {
+            getAllSneakers()
+                .then(res => {
+                    console.log('use Effect hook ran')
+                    setSneakers(res.data.sneakers)
                 })
-            })
-			.catch(error => {
-                msgAlert({
-                    heading: 'Oh no!',
-                    message: 'Something went wrong.',
-                    variant: 'danger'
+                .catch(error => {
+                    msgAlert({
+                        heading: 'Oh no!',
+                        message: 'bummer.',
+                        variant: 'danger'
+                    })
+                    setError(true)
                 })
-                setError(true)
-            })
-	}, [])
+        }, [])
 
-    console.log('the sneakers in SneakersIndex: \n', sneakers)
+        // console.log('the sneakers in SneakersIndex: \n', sneakers)
 
     if (error) {
         return <LoadingScreen />
@@ -58,7 +50,9 @@ const SneakersIndex = (props) => {
             <Card.Header>{sneaker.name}</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    {sneaker.colorway}
+                    <Link to={`/sneakers/${sneaker._id}`} className='btn btn-info'>
+                        SEE DETAILS
+                    </Link>
                 </Card.Text>
                 { sneaker.owner ?
                     <Card.Footer>owner: {sneaker.owner.email}</Card.Footer>
