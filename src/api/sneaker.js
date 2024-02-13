@@ -10,6 +10,18 @@ export const getAllSneakers = () => {
 export const getOneSneaker = (id) => {
     return axios(`${apiUrl}/sneakers/${id}`)
 }
+
 // CREATE -> Add a sneaker
+export const createSneaker = (user, newSneaker) => {
+    return axios({
+        url: `${apiUrl}/sneakers`,
+        method: 'POST',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { sneaker: newSneaker }
+    })
+}
+
 // UPDATE -> Adjust a sneaker
 // DELETE -> throw away a pair of sneakers
